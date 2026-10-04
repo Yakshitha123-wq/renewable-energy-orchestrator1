@@ -4,6 +4,8 @@ An agentic AI system that autonomously manages a renewable energy portfolio (5 s
 
 Built for **ET AI Hackathon: Agentic Edition (Accenture), Problem 4: Utilities – Renewable Energy Orchestrator**.
 
+Built by Yakshitha. AI pair-programming assistance (Claude) was used for code generation and review; all design decisions, testing and presentation are my own.
+
 > Status: **Day 1 complete**: grid simulator, control-room dashboard, baseline controllers. Optimizer, AI agent and reliability tests are in progress.
 
 ## How it works (target architecture)
