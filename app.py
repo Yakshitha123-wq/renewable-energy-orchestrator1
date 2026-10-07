@@ -12,6 +12,7 @@ from plotly.subplots import make_subplots
 from src.config import STEP_HOURS, STEPS_PER_DAY
 from src.controllers import CONTROLLERS
 from src.dispatch import run_step
+from src.panels import render_compare, render_plan
 from src.scenarios import demo_day
 from src.simulator import GridSimulator
 
@@ -312,7 +313,8 @@ def style(fig, height):
     return fig
 
 
-tab_day, tab_fc, tab_assets, tab_log = st.tabs(["Day so far", "Next 4 hours", "Assets", "Event and decision log"])
+tab_day, tab_cmp, tab_plan, tab_fc, tab_assets, tab_log = st.tabs(
+    ["Day so far", "Compare controllers", "Optimizer plan", "Next 4 hours", "Assets", "Event and decision log"])
 
 with tab_day:
     if hist.empty:
@@ -420,3 +422,9 @@ with tab_log:
         log["time"] = log.time.str[-5:]
         log.columns = ["Time", "Decision", "Buy MW", "Sell MW", "Charge MW", "Discharge MW", "Cost ₹"]
         st.dataframe(log.iloc[::-1].round(1), hide_index=True, width="stretch", height=360)
+
+with tab_cmp:
+    render_compare(C, style, int(seed), SCENARIOS[scenario])
+
+with tab_plan:
+    render_plan(sim, C, style)

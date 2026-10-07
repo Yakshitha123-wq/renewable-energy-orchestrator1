@@ -4,6 +4,7 @@ These two are the comparison baselines. The optimizer (Day 2) and the AI agent (
 plug in with the same `decide(sim) -> Decision` interface.
 """
 from .dispatch import Decision
+from .optimizer import MODES
 
 
 class NoOrchestration:
@@ -34,4 +35,4 @@ class SimpleRules:
         return Decision(battery_mw=plan, reason=f"Simple rules: {why}")
 
 
-CONTROLLERS = {c.name: c for c in (NoOrchestration, SimpleRules)}
+CONTROLLERS = {c.name: c for c in (NoOrchestration, SimpleRules, *MODES)}

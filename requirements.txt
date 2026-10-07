@@ -6,3 +6,4 @@ streamlit>=1.50
 plotly>=5.22
 python-dotenv>=1.0
 pytest>=8.0
+scipy>=1.11
